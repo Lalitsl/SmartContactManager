@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>user dashboard</title>
+</head>
+
+<body>
+
+	<section>
+		<marquee class="alert alert-success text-dark">
+			<p style="font-family: Impact; font-size: 18pt">Welcome <span class="text-success fw-bold"
+					th:text="${user.name}"></span> In Our Smart-Contact-Manager Dashboard</p>
+		</marquee>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 p-2">
+					<div class="text-center">
+						<img src="/img/dashboard.png" style="width:50%;">
+						<h3 class="fw-bold text-secondary">Start Adding Your Contacts Here</h3>
+						<a th:href="@{/user/addcontact}" class="btn btn-lg my-2"
+							style="background-color:#2471A3; color: white;">Add Contact</a>
+					</div>
+				</div>
+				<div class="col-md-6 p-5">
+					<div class="card shadow-lg p-2" style="width: 23rem; background-color: #F2F6FF; border-radius: 20px;">
+						<div class="card-body">
+							<h5 class="card-title my-3"><img
+									src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxPjSbpDPoqrscKgDBGNSnpQntif0ZvtVtcCIP1PDwa2TY1ycR8nfdc8OMr9qBnJKXyUw&usqp=CAU"
+									style="width: 15%;"> Donote money for our organization</h5>
+
+							<div class="my-3">
+								<input type="text" class="form-control" id="paymentFeild"
+									aria-describedby="emailHelp" placeholder="Enter Money for donote">
+							</div>
+							<button type="button" class="btn w-100 text-light fw-bold"
+								style="background-color: #F26D20;" onclick="paymentStart()">Donote Money</button>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</section>
+
+</body>
+
+</html>

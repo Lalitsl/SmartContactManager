@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>login page</title>
+
+	<style>
+		/* Add CSS for animation */
+		.modal.fade .modal-dialog {
+			transform: scale(0.1);
+			transition: transform 0.3s ease-out;
+		}
+
+		.modal.fade.show .modal-dialog {
+			transform: scale(1);
+		}
+	</style>
+</head>
+
+<body>
+	<section
+		style="background-image: url(https://t3.ftcdn.net/jpg/04/92/75/18/240_F_492751838_Ybun2zwpQC8AZv11AwZLdXJk4cUrTt5z.jpg); background-repeat: no-repeat;height: 100vh; background-size: contain;">
+
+		<!-- Modal -->
+		<div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="alert alert-success" role="alert">
+							We have sent OTP to your email ...
+						</div>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+
+					<div th:if="${session.message}" th:classappend="${'alert-'+session.message.type}" class="alert"
+						role="alert">
+						<span th:text="${session.message.content}" class="fw-bold"></span>
+					</div>
+
+					<div class="modal-body">
+
+						<form th:action="@{/verifyOtp}" method="post" class="fw-bold my-3">
+							<div class="mb-3">
+								<label class="form-label">Enter OTP </label>
+								<input type="number" class="form-control" name="otp" id="otp" placeholder="Enter OTP"
+									required>
+							</div>
+							<div class="">
+								<button type="submit" class="btn bg-success w-25 mx-5 text-white">Verify OTP</button>
+							</div>
+						</form>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script>
+			// JavaScript to trigger modal on page load
+			$(document).ready(function () {
+				$('#forgotPasswordModal').modal('show');
+			});
+		</script>
+	</section>
+
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="${title}">particular</title>
+</head>
+
+<body>
+	<section>
+		<!-- if id found of particular contact so this html content will be showing on user -->
+		<div class="container" th:if="${con}">
+			<div class="col-5 offset-3 card shadow-lg p-3 text-center my-2">
+				<h5 class="text-success text-end fw-bold">Hii <span th:text="${con.name}"></span>..</h5>
+
+				<div class="card" style="width: 25rem;">
+					<img th:src="'/img/'+${con.image}" class="card-img-top" alt="profile image">
+					<div class="card-body">
+						<div class="d-flex card-title justify-content-center">
+							<h5 th:text="${con.cId}" class="fw-bold text-center"></h5>
+							<h5 class="text-danger fw-bold mx-2 text-center" th:text="${con.name}"></h5>
+						</div>
+
+						<p class="card-text" th:utext="${con.description}">Description</p>
+					</div>
+					
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item" th:text="${con.secondName}"></li>
+						<li class="list-group-item" th:text="${con.email}"></li>
+						<li class="list-group-item" th:text="${con.phone}"></li>
+						<li class="list-group-item" th:text="${con.work}"></li>
+					</ul>
+					<div class="d-flex justify-content-center">
+						<form th:action="@{'/user/updatecontact/'+${con.cId}}" method="post" class="d-inline-block">
+							<button type="submit" class="btn btn-primary my-3">Edit</button>
+						</form>
+
+						<button th:onclick="|deleteBox(${con.cId})|" type="button"
+							class="btn btn-danger my-3 ms-2">Delete</button>
+					</div>
+				</div>
+
+
+
+
+
+
+				<!--
+				<div class="text-center">
+					<img th:src="'/img/'+${con.image}" style="width: 50%;">
+				</div>
+				<div class="row my-2 ">
+					<div class="col-md-6 p-1 text-end">
+						<h5>Your ID :</h5>
+						<h5>First Name : </h5>
+						<h5>Last Name : </h5>
+						<h5>Your Email : </h5>
+						<h5>Phone Number : </h5>
+						<h5>Work : </h5>
+						<h5>Description : </h5>
+					</div>
+					<div class="col-md-6 p-1 text-start">
+						<h5 th:text="${con.cId}"></h5>
+						<h5 th:text="${con.name}"></h5>
+						<h5 th:text="${con.secondName}"></h5>
+						<h5 th:text="${con.email}"></h5>
+						<h5 th:text="${con.phone}"></h5>
+						<h5 th:text="${con.work}"></h5>
+						<h5 th:utext="${con.description}"></h5>
+					</div>
+
+					<div class="d-flex justify-content-center">
+						<form th:action="@{'/user/updatecontact/'+${con.cId}}" method="post" class="d-inline-block">
+							<button type="submit" class="btn btn-primary my-3">Edit</button>
+						</form>
+
+						<button th:onclick="|deleteBox(${con.cId})|" type="button"
+							class="btn btn-danger my-3 ms-2">Delete</button>
+					</div>
+
+				</div>
+-->
+
+
+			</div>
+
+		</div>
+
+		<!-- if you want to aceess other contact id data  -->
+		<div th:unless="${con}">
+			<h4 class="fw-bold alert alert-danger" role="alert">Sorry !!! you don't have permission to see other
+				contacts details . you are unauthorized person</h4>
+		</div>
+	</section>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>login page</title>
+</head>
+
+<body>
+	<section
+		style="background-image: url(https://website-assets-fw.freshworks.com/attachments/cks4jrkww07r6n9g0m9u543em-11239-freshsales-illustration-01.one-half.png); background-repeat: no-repeat; height: 500px;">
+		<div class="container mt-4">
+			<div class="row">
+				<div class="col-md-4 offset-5 shadow-lg p-4 py-3 my-5">
+					<form th:action="@{/signin}" action="#" method="post" class="fw-bold my-5">
+						<h3 class="text-center"><u>Sign-In</u></h3>
+
+						<div th:if="${param.error}" class="alert alert-danger">
+							Invalid username and password
+						</div>
+						<div th:if="${param.logout}" class="alert alert-success">
+							You have been logged out
+						</div>
+						<div th:if="${param.change}" class="alert alert-success">
+							<p th:text="${param.change}"></p>
+						</div>
+						<div class="mb-3">
+							<label class="form-label">User Name</label>
+							<input type="text" class="form-control" name="username" id="username"
+								placeholder="Enter User Name">
+						</div>
+						<div class="mb-3">
+							<label class="form-label">Password</label>
+							<input type="password" class="form-control" name="password" id="password"
+								placeholder="Enter Password">
+						</div>
+						<div class="mb-3 form-check">
+							<input class="form-check-input" type="checkbox" name="agreement">
+							<label class="form-check-label" for="flexCheckDefault">Accept Term & Condition </label>
+						</div>
+						<div class="my-4">
+							<a th:href="@{/signup}" class="fw-bold text-decoration-none" >Register here </a>
+							<a th:href="@{/forgot}" class="fw-bold text-decoration-none" style="float: right;">Forgot Password</a>
+							
+						</div>
+						<div class="">
+							<button type="submit" class="btn bg-primary w-25 mx-5 text-white">Sign-In</button>
+							<button type="" class="btn btn-danger w-25 ml-5">Cancel</button>
+						</div>
+					</form>
+
+				</div>
+
+
+			</div>
+
+		</div>
+	</section>
+
+</body>
+
+</html>

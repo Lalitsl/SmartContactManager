@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Settings page</title>
+</head>
+
+<body>
+
+	<section style="background-image: url(https://img.freepik.com/free-vector/forgot-password-concept-illustration_114360-1095.jpg); background-repeat: no-repeat; height: 80vh;">
+		<div class="col-md-4 offset-6 p-5 shadow-lg " style="border-radius: 50%;">
+
+			<form th:action="@{/user/changePassword}" method="POST">
+				<h3 class="text-center text-success fw-bold">Change Password</h3>
+
+				<div th:if="${session.message}" th:classappend="${'alert-'+session.message.type}" class="alert"
+					role="alert">
+					<span th:text="${session.message.content}" class="fw-bold"></span>
+				</div>
+
+				<div class="input-group my-4">
+					<div class="input-group-prepend">
+						<div class="input-group-text">
+							<i class="fa-solid fa-lock p-1"></i>
+						</div>
+					</div>
+					<input type="password" id="oldpassword" name="oldPassword" placeholder="Enter Old Password"
+						class="form-control">
+				</div>
+
+				<div class="input-group my-4">
+					<div class="input-group-prepend">
+						<div class="input-group-text">
+							<i class="fa-solid fa-unlock p-1"></i>
+						</div>
+					</div>
+					<input type="password" id="newPassword" name="newPassword" placeholder="Enter New Password"
+						class="form-control">
+				</div>
+				<div class="text-center">
+					<button type="submit" class="btn bg-primary w-50 text-white">Change Password</button>
+				</div>
+			</form>
+		</div>
+
+	</section>
+
+</body>
+
+</html>

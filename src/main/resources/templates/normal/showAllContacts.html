@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="${title}"></title>
+</head>
+
+<body>
+	<section class="shadow-lg p-5">
+		<h5 class="text-center fw-bold my-3 text-success"><u> * You can see all contacts here </u></h5>
+
+		<div th:if="${session.message}" th:classappend="${'alert-'+session.message.type}" class="alert" role="alert">
+			<span th:text="${session.message.content}" class="fw-bold"></span>
+		</div>
+
+		<!-- search functionality start -->
+		<div class="container my-3 search_container">
+			<div class="d-flex w-25 ms-auto" style="border: 1px solid gray; border-radius: 10px;">
+				<div class="p-2"><i class="fa-solid fa-magnifying-glass"></i></div>
+				<input onkeyup="search()" id="search_input" class="form-control me-2" type="search"
+					placeholder="Search Name" aria-label="Search">
+			</div>
+			<div class="search_result w-25 ms-auto">
+
+			</div>
+		</div>
+		<!-- search functionality end  -->
+
+		<div class="container-fluid pt-3">
+			<div class="table-responsive">
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">Name</th>
+							<th scope="col">Email</th>
+							<th scope="col">Phone</th>
+							<th scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="c: ${contacts}">
+							<th th:text="${'SCM2023 '+c.cId}" scope="row"></th>
+							<td>
+								<a th:href="@{'/user/contact/'+${c.cId}}">
+									<img class="myProfile" th:src="'/img/'+${c.image}">
+									<span class="px-1" th:text="${c.name}"></span>
+								</a>
+
+							</td>
+							<td th:text="${c.email}"></td>
+							<td th:text="${c.phone}"></td>
+							<td class="d-flex">
+								<form th:action="@{'/user/updatecontact/'+${c.cId}}" method="post">
+									<button type="submit" style="border: none;"><i
+											class="fa-solid fa-pen-to-square fa-lg px-2"></i></button>
+								</form>
+
+								<a th:href="@{'/user/contact/'+${c.cId}}"><i
+										class="fa-sharp fa-regular fa-eye fa-lg px-2 text-success"></i></a>
+								<!--<a th:href="@{'/user/deleteContact/'+${c.cId}}"><i
+									class="fa-solid fa-trash fa-lg px-2 text-danger"></i></a>-->
+								<a href="#" th:onclick="|deleteBox(${c.cId})|"><i
+										class="fa-solid fa-trash fa-lg px-2 text-danger"></i></a>
+							</td>
+						</tr>
+
+					</tbody>
+				</table>
+
+			</div>
+
+			<!--  pagination part start here -->
+
+			<nav aria-label="Page navigation example" style="float:right;">
+				<ul class="pagination">
+
+					<li th:if="${currentPage != 0}" class="page-item fw-bold">
+						<a class="page-link" th:href="@{'/user/showAllContacts/'+${currentPage-1}}"
+							aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li th:each="i: ${#numbers.sequence(1,totalPage)}"
+						th:classappend="${currentPage==i-1} ? 'active':' ' " class="page-item fw-bold"><a
+							th:href="@{'/user/showAllContacts/'+${i-1}}" class="page-link" href="#"><span
+								th:text="${i}"></span></a></li>
+
+					<li th:if="${currentPage+1 != totalPage}" class="page-item fw-bold">
+						<a class="page-link" th:href="@{'/user/showAllContacts/'+${currentPage+1}}" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<!--  pagination part end here -->
+		</div>
+
+
+
+	</section>
+
+
+</body>
+
+</html>

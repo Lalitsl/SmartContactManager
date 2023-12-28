@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="${title}">add contact</title>
+</head>
+
+<body>
+
+	<section
+		style="background-image: url(https://media.istockphoto.com/id/1455943818/photo/the-architect-takes-notes-on-the-blueprint-then-inputs-them-into-the-laptop-to-keep-an.jpg?b=1&s=612x612&w=0&k=20&c=dgoIAp8DAFywbAo36mL7Kqq5Fxbeb9VND5bOehsdhsc=); background-repeat: no-repeat; background-size: cover;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 offset-7 shadow-lg p-4 " style="margin-top: -30px;">
+					<form action="#" th:action="@{/user/processContact}" th:object="${contact}" method="POST"
+						enctype="multipart/form-data">
+						<h3 class="text-center text-light fw-bold"><u>Add-Contact</u></h3>
+
+						<div th:if="${session.message}" th:classappend="${'alert-'+session.message.type}" class="alert"
+							role="alert">
+							<span th:text="${session.message.content}" class="fw-bold"></span>
+						</div>
+
+						<div class="input-group my-3">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa fa-plus p-1"></i>
+								</div>
+							</div>
+							<input type="text" id="firstName" name="name" placeholder="Enter First Name "
+								class="form-control" required>
+						</div>
+
+						<div class="input-group my-3">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fas fa-user-alt p-1"></i>
+								</div>
+							</div>
+							<input type="text" id="secondName" name="secondName" placeholder="Enter Second Name "
+								class="form-control" required>
+						</div>
+
+						<div class="input-group my-3">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa fa-phone p-1"></i>
+								</div>
+							</div>
+							<input type="number" id="phone" name="phone" placeholder="Enter phone Number "
+								class="form-control" required>
+						</div>
+
+						<div class="input-group my-3">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa-solid fa-envelope p-1"></i>
+								</div>
+							</div>
+							<input type="email" id="email" name="email" placeholder="Enter Email-Id "
+								class="form-control" required>
+						</div>
+
+						<div class="input-group my-3">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa fa-briefcase p-1"></i>
+								</div>
+							</div>
+							<input type="text" id="work" name="work" placeholder="Enter Your Work " class="form-control"
+								required>
+						</div>
+
+						<div class="input-group my-3">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa fa-file p-1"></i>
+								</div>
+							</div>
+							<input type="file" id="image" name="profileImage" class="form-control">
+						</div>
+
+						<div class="form-group my-3">
+							<label class="fw-bold text-primary">Enter Description</label>
+							<textarea id="description" name="description" class="form-control my-1" rows="5"
+								placeholder="Enter Description "></textarea>
+						</div>
+
+						<button type="submit" class="btn bg-primary w-100 text-white">Add Contact</button>
+					</form>
+				</div>
+			</div>
+
+		</div>
+		<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+		<script>
+			tinymce.init({
+				selector: '#description'
+			});
+		</script>
+		
+	</section>
+
+
+</body>
+
+</html>

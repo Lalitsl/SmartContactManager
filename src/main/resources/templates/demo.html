@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title></title>
+</head>
+<body>
+	<section>
+		<h1>demo page ............. </h1>
+		<div>
+			<h2 th:text="${data.name}"></h2>
+			<h2 th:text="${data.email}"></h2>
+			<h2 th:text="${data.about}"></h2>
+			<h2 th:text="${data.password}"></h2>
+			<h2 th:text="${data.role}"></h2>
+			<h2 th:text="${data.enabled}"></h2>
+				<h2 th:text="${data}"></h2>
+		</div>
+	</section>
+	
+	
+	
+</body>
+</html>
