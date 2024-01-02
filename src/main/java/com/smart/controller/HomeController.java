@@ -79,13 +79,13 @@ public class HomeController {
 
 			session.setAttribute("message", new Message("Ragistration successfully completed ", "alert-success"));
 			return "signup";
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("user", user);
 			session.setAttribute("message", new Message("something went wrong " + e.getMessage(), "alert-danger"));
 			return "signup";
-			
 		}
 
 	}
@@ -96,9 +96,9 @@ public class HomeController {
 	public String customLogin(Model model) {
 		model.addAttribute("title", "Login-Smart Contact Manager");
 		return "login";
+		
 	}
-	
-	
 	
 
 }
+

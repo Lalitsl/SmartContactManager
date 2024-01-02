@@ -10,17 +10,14 @@
 
 	<section>
 		<div class="container mt-4">
-			<div class="row p-4">
-				<div class="col-md-2"></div>
-				<div class="col-md-4 shadow">
-					<img src="https://webcdn.callhippo.com/blog/wp-content/uploads/2022/06/25-cold-calling-scripts-to-change-your-sales-game.png"
-						style="transform: translateY(70px);">
-				</div>
-				<div class="col-md-4 shadow p-4">
+			<div class="row p-4"
+				style="background-image: url(https://webcdn.callhippo.com/blog/wp-content/uploads/2022/06/25-cold-calling-scripts-to-change-your-sales-game.png); background-repeat: no-repeat;">
+
+
+				<div class="col-md-5 offset-5 shadow p-4" style="background-color: #F2F2F2; border-radius: 20px;">
 
 					<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert">
 						<p th:text="${session.message.content}"></p>
-
 					</div>
 
 					<form class="fw-bold" th:action="@{/do_ragister}" method="post" th:object="${user}">
@@ -66,7 +63,7 @@
 
 					</form>
 				</div>
-				<div class="col-md-2"></div>
+
 			</div>
 
 		</div>

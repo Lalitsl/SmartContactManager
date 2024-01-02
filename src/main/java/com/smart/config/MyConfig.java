@@ -44,7 +44,10 @@ public class MyConfig {
           .and().csrf().disable();
     	  http.authenticationProvider(authenticationProvider());
         return http.build();
+        
     }
+    
+    
 }
 
 
