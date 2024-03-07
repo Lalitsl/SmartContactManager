@@ -28,5 +28,6 @@ public class MailService {
 		simpleMailMessage.setText(mailStructure.getMessage());
 		simpleMailMessage.setTo(mail);
 		mailSender.send(simpleMailMessage);
+		
 	}
 }

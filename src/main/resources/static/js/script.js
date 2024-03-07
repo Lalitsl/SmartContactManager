@@ -25,7 +25,7 @@ const search = () => {
 		$(".search_result").hide();
 	} else {
 		// sending request to server
-		let url = `http://localhost:8080/search/${query}`;
+		let url = `http://localhost:8081/search/${query}`;
 
 		fetch(url).then((Response) => {
 			return Response.json();
